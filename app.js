@@ -6,8 +6,7 @@ const path = require('path');
 const { routePath, viewPaths } = require('./constant/routesPaths');
 
 
-const app = express()
-const port = 3000
+const app = express();
 console.log(__dirname + '/public')
 app.use(express.static(__dirname + '/public'));
 
@@ -27,6 +26,7 @@ app.get(routePath.store, (req, res) => {
     res.sendFile(__dirname+viewPaths.store)
 });
 
-app.listen(port, "0.0.0.0", () => {
-  console.log(`Example app listening at http://localhost:${port}`)
-})
+const port = process.env.PORT || 3000;
+app.listen(port, '0.0.0.0', () => {
+    console.log('Server is running s on port: ' + port)
+});
